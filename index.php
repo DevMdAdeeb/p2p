@@ -504,9 +504,15 @@ $transactions = $stmt->fetchAll();
                         <input type="number" step="any" name="price" id="edit_price" required class="input-dark font-bold tracking-widest">
                     </div>
                 </div>
-                <div>
-                    <label class="block text-xs text-slate-400 mb-2 font-bold italic text-yellow-500 tracking-tighter uppercase underline">تعديل الرسوم (USDT)</label>
-                    <input type="number" step="any" name="binance_fee" id="edit_binance_fee" class="input-dark text-yellow-500 font-bold tracking-widest">
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs text-slate-400 mb-2 font-bold italic text-yellow-500 tracking-tighter uppercase underline">رسوم بينانس (USDT)</label>
+                        <input type="number" step="any" name="binance_fee" id="edit_binance_fee" class="input-dark text-yellow-500 font-bold tracking-widest">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-slate-400 mb-2 font-bold italic text-blue-400 tracking-tighter uppercase underline">رسوم إيداع (YER)</label>
+                        <input type="number" step="any" name="manual_fee" id="edit_manual_fee" class="input-dark text-blue-400 font-bold tracking-widest">
+                    </div>
                 </div>
                 <div class="flex gap-4 pt-4">
                     <button type="submit" class="flex-1 bg-blue-600 hover:bg-blue-500 py-4 rounded-2xl font-bold shadow-lg shadow-blue-900/20 text-white transition-colors">تحديث السجل</button>
@@ -659,6 +665,7 @@ function showToast(msg) {
             document.getElementById('edit_amount').value = data.crypto_amount;
             document.getElementById('edit_price').value = data.price_per_unit;
             document.getElementById('edit_binance_fee').value = data.binance_fee;
+            document.getElementById('edit_manual_fee').value = data.manual_fee;
             
             let date = new Date(data.created_at);
             let localDate = new Date(date.getTime() - date.getTimezoneOffset() * 60000).toISOString().slice(0, 16);
